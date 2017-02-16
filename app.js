@@ -10,6 +10,10 @@ ToBuyController.$inject = ['ShoppingListCheckOffService'];
 function ToBuyController(ShoppingListCheckOffService) {
   var toBuy = this;
   toBuy.items = ShoppingListCheckOffService.getToBuyItems();
+
+  toBuy.buy = function(index) {
+    ShoppingListCheckOffService.buy(index);
+  }
 }
 
 AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
@@ -31,6 +35,12 @@ function ShoppingListCheckOffService() {
 
   service.getToBuyItems = function() {
     return toBuyItems;
+  }
+
+  service.buy = function(index) {
+    var item = toBuyItems[index];
+    boughtItems.push(item);
+    toBuyItems.splice(index, 1);
   }
 }
 
