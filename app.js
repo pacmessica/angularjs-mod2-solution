@@ -21,19 +21,16 @@ function AlreadyBoughtController(ShoppingListCheckOffService) {
 
 function ShoppingListCheckOffService() {
   var service = this;
-  var items = [
-    {name: "cookies", bought: false},
-    {name: "milk", bought: false},
-    {name: "eggs", bought: false},
-    {name: "pasta", bought: false}
-  ];
+  var toBuyItems = ["cookies", "milk", "eggs", "pasta"];
+
+  var boughtItems = [];
 
   service.getBoughtItems = function() {
-    return items.filter(item => item.bought)
+    return boughtItems;
   }
 
   service.getToBuyItems = function() {
-    return items.filter(item => !item.bought)
+    return toBuyItems;
   }
 }
 
